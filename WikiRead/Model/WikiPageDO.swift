@@ -55,7 +55,7 @@ class WikiPageDO: NSObject {
         if let pageArray = pageArray, pageArray.count>0{
             var pages:Array<WikiPage> = Array<WikiPage>()
             let count = pageArray.count
-            let index = count < 20 ? count : 20
+            let index = count < 50 ? count : 50
             for i in 0..<index{
                 pages.append(WikiPage(page:pageArray[i]))
             }
