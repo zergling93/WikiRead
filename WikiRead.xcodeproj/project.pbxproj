@@ -43,8 +43,6 @@
 		9C32079C20DE5E1200C3AA4F /* WikiPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32079B20DE5E1200C3AA4F /* WikiPage.swift */; };
 		9C32079F20DE5E2800C3AA4F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C32079D20DE5E2800C3AA4F /* Model.xcdatamodeld */; };
 		9C42F98420DE62F1006DA007 /* WikiPageDO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42F98320DE62F1006DA007 /* WikiPageDO.swift */; };
-		9C42F98620DE6DA0006DA007 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42F98520DE6DA0006DA007 /* MainTabController.swift */; };
-		9C42F98820DE75A5006DA007 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42F98720DE75A5006DA007 /* BookmarkViewController.swift */; };
 		9C42F98A20DE75CF006DA007 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42F98920DE75CF006DA007 /* SearchViewController.swift */; };
 		9C42F98D20DE776B006DA007 /* WikiPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42F98B20DE776B006DA007 /* WikiPageCell.swift */; };
 		9C42F98E20DE776B006DA007 /* WikiPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C42F98C20DE776B006DA007 /* WikiPageCell.xib */; };
@@ -139,8 +137,6 @@
 		9C32079B20DE5E1200C3AA4F /* WikiPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiPage.swift; sourceTree = "<group>"; };
 		9C32079E20DE5E2800C3AA4F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9C42F98320DE62F1006DA007 /* WikiPageDO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiPageDO.swift; sourceTree = "<group>"; };
-		9C42F98520DE6DA0006DA007 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainTabController.swift; path = WikiRead/Views/MainTabController.swift; sourceTree = SOURCE_ROOT; };
-		9C42F98720DE75A5006DA007 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		9C42F98920DE75CF006DA007 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9C42F98B20DE776B006DA007 /* WikiPageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiPageCell.swift; sourceTree = "<group>"; };
 		9C42F98C20DE776B006DA007 /* WikiPageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WikiPageCell.xib; sourceTree = "<group>"; };
@@ -214,7 +210,6 @@
 				9C32079A20DE5D5500C3AA4F /* Model */,
 				9C32073A20DE56F400C3AA4F /* Helpers */,
 				9C32072820DE56D700C3AA4F /* AppDelegate.swift */,
-				9C32072C20DE56D700C3AA4F /* Main.storyboard */,
 				9C32072F20DE56D900C3AA4F /* Assets.xcassets */,
 				9C32073120DE56D900C3AA4F /* LaunchScreen.storyboard */,
 				9C32073420DE56D900C3AA4F /* Info.plist */,
@@ -392,10 +387,9 @@
 		9C42F9C120DE8D42006DA007 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9C42F98520DE6DA0006DA007 /* MainTabController.swift */,
+				9C32072C20DE56D700C3AA4F /* Main.storyboard */,
 				9C32072A20DE56D700C3AA4F /* ExploreViewController.swift */,
 				9C42F98920DE75CF006DA007 /* SearchViewController.swift */,
-				9C42F98720DE75A5006DA007 /* BookmarkViewController.swift */,
 				9C42F9CE20DEA28B006DA007 /* WebViewController.swift */,
 				9C42F98B20DE776B006DA007 /* WikiPageCell.swift */,
 				9C42F98C20DE776B006DA007 /* WikiPageCell.xib */,
@@ -481,7 +475,6 @@
 				9C32077E20DE5CB900C3AA4F /* MagicalRecordInternal.m in Sources */,
 				9C32077F20DE5CB900C3AA4F /* MagicalRecord+iCloud.m in Sources */,
 				9C32078E20DE5CB900C3AA4F /* NSManagedObjectContext+MagicalRecord.m in Sources */,
-				9C42F98620DE6DA0006DA007 /* MainTabController.swift in Sources */,
 				9C32079820DE5CB900C3AA4F /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */,
 				9C42F9BB20DE791B006DA007 /* SDImageCache.m in Sources */,
 				9C42F9B820DE791B006DA007 /* UIImage+MultiFormat.m in Sources */,
@@ -513,7 +506,6 @@
 				9C42F9B220DE791B006DA007 /* MKAnnotationView+WebCache.m in Sources */,
 				9C32078920DE5CB900C3AA4F /* NSManagedObject+MagicalAggregation.m in Sources */,
 				9C32078020DE5CB900C3AA4F /* MagicalRecord+Setup.m in Sources */,
-				9C42F98820DE75A5006DA007 /* BookmarkViewController.swift in Sources */,
 				9C32079C20DE5E1200C3AA4F /* WikiPage.swift in Sources */,
 				9C42F9BE20DE791B006DA007 /* UIImageView+WebCache.m in Sources */,
 				9C42F98420DE62F1006DA007 /* WikiPageDO.swift in Sources */,

@@ -13,6 +13,14 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    static func getInstance()->UIViewController{
+        let s = UIStoryboard.init(name: "Main", bundle: nil)
+        let vc1:ExploreViewController = s.instantiateViewController(withIdentifier: "ExploreViewController") as! ExploreViewController
+        let nav1 = UINavigationController.init(rootViewController: vc1)
+        return nav1
+    }
+    
+    
     var recentPages:Array<WikiPage> = Array<WikiPage>()
     
     
@@ -35,7 +43,11 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func loadNavBar()->Void{
-        self.navigationItem.titleView = UIImageView.init(image: UIImage.init(named: ""))
+        let view = UIView.init(frame: CGRect(x: 0, y: 0, width: 120, height: 30))
+        let image = UIImageView.init(frame: CGRect(x: 0, y: 0, width: 120, height: 24))
+        image.image = UIImage.init(named: "text")
+        view.addSubview(image)
+        self.navigationItem.titleView = view
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,7 +77,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 80.0
+            return 70.0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

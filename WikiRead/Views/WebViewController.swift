@@ -29,7 +29,11 @@ class WebViewController: UIViewController, UIWebViewDelegate {
         loadWebView()
     }
     func loadNavBar()->Void{
-        self.navigationItem.titleView = UIImageView.init(image: UIImage.init(named: ""))
+        let view = UIView.init(frame: CGRect(x: 0, y: 0, width: 120, height: 30))
+        let image = UIImageView.init(frame: CGRect(x: 0, y: 0, width: 120, height: 24))
+        image.image = UIImage.init(named: "text")
+        view.addSubview(image)
+        self.navigationItem.titleView = view
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(back))
     }
     

@@ -23,7 +23,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kMZ-fn-KLO">
-                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                <rect key="frame" x="0.0" y="84" width="375" height="583"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -34,7 +34,7 @@
                             <constraint firstItem="Sne-Tg-wSZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="P7I-G7-7qw"/>
                             <constraint firstItem="Sne-Tg-wSZ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Waq-GG-1v1"/>
                             <constraint firstItem="kMZ-fn-KLO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dam-Am-aMM"/>
-                            <constraint firstItem="kMZ-fn-KLO" firstAttribute="top" secondItem="Sne-Tg-wSZ" secondAttribute="bottom" id="vju-hs-WI6"/>
+                            <constraint firstItem="kMZ-fn-KLO" firstAttribute="top" secondItem="Sne-Tg-wSZ" secondAttribute="bottom" constant="8" id="vju-hs-WI6"/>
                             <constraint firstItem="Sne-Tg-wSZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="w2X-6g-3be"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -47,44 +47,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="69.599999999999994" y="61.619190404797607"/>
-        </scene>
-        <!--Bookmark View Controller-->
-        <scene sceneID="N8c-mi-u1o">
-            <objects>
-                <viewController storyboardIdentifier="BookmarkViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4o4-TX-ZLb" customClass="BookmarkViewController" customModule="WikiRead" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="csz-O8-EGc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="search" translatesAutoresizingMaskIntoConstraints="NO" id="hS8-Ln-bhr">
-                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="esS-AM-voh">
-                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="hS8-Ln-bhr" firstAttribute="top" secondItem="TIB-D0-IB6" secondAttribute="top" id="1HK-1Q-jmR"/>
-                            <constraint firstItem="esS-AM-voh" firstAttribute="leading" secondItem="TIB-D0-IB6" secondAttribute="leading" id="Wvf-Co-1o8"/>
-                            <constraint firstItem="esS-AM-voh" firstAttribute="bottom" secondItem="TIB-D0-IB6" secondAttribute="bottom" id="ffH-50-plb"/>
-                            <constraint firstItem="hS8-Ln-bhr" firstAttribute="leading" secondItem="TIB-D0-IB6" secondAttribute="leading" id="mk1-q9-mVJ"/>
-                            <constraint firstItem="esS-AM-voh" firstAttribute="top" secondItem="hS8-Ln-bhr" secondAttribute="bottom" id="ohV-YQ-0G1"/>
-                            <constraint firstItem="esS-AM-voh" firstAttribute="trailing" secondItem="TIB-D0-IB6" secondAttribute="trailing" id="oru-oI-AXB"/>
-                            <constraint firstItem="hS8-Ln-bhr" firstAttribute="trailing" secondItem="TIB-D0-IB6" secondAttribute="trailing" id="tqn-dd-rV0"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="TIB-D0-IB6"/>
-                    </view>
-                    <connections>
-                        <outlet property="searchBar" destination="hS8-Ln-bhr" id="30W-4i-spO"/>
-                        <outlet property="tableView" destination="esS-AM-voh" id="b5B-it-HgD"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R4r-iu-8cY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="798" y="62"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="lX3-fQ-RNf">
@@ -105,20 +67,26 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </searchBar>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vo3-Yi-R4J">
-                                            <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                            <rect key="frame" x="0.0" y="78" width="375" height="589"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableView>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ObV-C8-ocm">
+                                            <rect key="frame" x="2" y="74" width="371" height="2"/>
+                                            <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </progressView>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="Vo3-Yi-R4J" firstAttribute="top" secondItem="ZJg-q0-3pA" secondAttribute="bottom" id="4kk-nW-4oC"/>
+                                        <constraint firstItem="Vo3-Yi-R4J" firstAttribute="top" secondItem="ZJg-q0-3pA" secondAttribute="bottom" constant="2" id="4kk-nW-4oC"/>
                                         <constraint firstAttribute="trailing" secondItem="ZJg-q0-3pA" secondAttribute="trailing" id="FCi-JY-3xy"/>
                                         <constraint firstItem="Vo3-Yi-R4J" firstAttribute="leading" secondItem="6Rv-8O-oDY" secondAttribute="leading" id="LEW-wK-XQY"/>
+                                        <constraint firstItem="Vo3-Yi-R4J" firstAttribute="top" secondItem="ObV-C8-ocm" secondAttribute="bottom" constant="2" id="ZL2-IX-bme"/>
                                         <constraint firstItem="ZJg-q0-3pA" firstAttribute="leading" secondItem="6Rv-8O-oDY" secondAttribute="leading" id="cOK-oA-f4K"/>
                                         <constraint firstItem="ZJg-q0-3pA" firstAttribute="top" secondItem="6Rv-8O-oDY" secondAttribute="top" constant="20" id="fq7-qY-kzz"/>
+                                        <constraint firstAttribute="trailing" secondItem="ObV-C8-ocm" secondAttribute="trailing" constant="2" id="n2F-vd-z1Y"/>
                                         <constraint firstAttribute="bottom" secondItem="Vo3-Yi-R4J" secondAttribute="bottom" id="tSe-Kw-LnA"/>
                                         <constraint firstAttribute="trailing" secondItem="Vo3-Yi-R4J" secondAttribute="trailing" id="wHs-Te-sWG"/>
+                                        <constraint firstItem="ObV-C8-ocm" firstAttribute="leading" secondItem="6Rv-8O-oDY" secondAttribute="leading" constant="2" id="xY8-tZ-oKL"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="light"/>
@@ -134,13 +102,14 @@
                         <viewLayoutGuide key="safeArea" id="csr-Ro-El1"/>
                     </view>
                     <connections>
+                        <outlet property="progressView" destination="ObV-C8-ocm" id="fgj-y8-L6f"/>
                         <outlet property="searchBar" destination="ZJg-q0-3pA" id="dFD-QR-N1L"/>
                         <outlet property="tableView" destination="Vo3-Yi-R4J" id="HRl-Ix-DjR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeP-dK-KsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1581.5999999999999" y="61.619190404797607"/>
+            <point key="canvasLocation" x="754" y="62"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="Vkt-bO-hPA">
@@ -151,7 +120,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FxY-0c-1wE">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="-70" width="375" height="737"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="st8-9o-QN8">
@@ -162,10 +131,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="FxY-0c-1wE" firstAttribute="leading" secondItem="9eL-2S-tvt" secondAttribute="leading" id="Cus-yo-bzK"/>
+                            <constraint firstItem="FxY-0c-1wE" firstAttribute="top" secondItem="XN0-Js-NKF" secondAttribute="top" constant="-70" id="Jov-fZ-wj1"/>
                             <constraint firstItem="9eL-2S-tvt" firstAttribute="trailing" secondItem="FxY-0c-1wE" secondAttribute="trailing" id="JwD-M1-3m6"/>
                             <constraint firstItem="st8-9o-QN8" firstAttribute="centerY" secondItem="XN0-Js-NKF" secondAttribute="centerY" id="gSl-bn-kLG"/>
                             <constraint firstItem="st8-9o-QN8" firstAttribute="centerX" secondItem="XN0-Js-NKF" secondAttribute="centerX" id="qwB-Oe-Qcp"/>
-                            <constraint firstItem="FxY-0c-1wE" firstAttribute="top" secondItem="9eL-2S-tvt" secondAttribute="top" id="yX5-kR-8DS"/>
                             <constraint firstItem="9eL-2S-tvt" firstAttribute="bottom" secondItem="FxY-0c-1wE" secondAttribute="bottom" id="yje-45-7bP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9eL-2S-tvt"/>
@@ -177,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zEq-lv-0Js" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2334" y="19"/>
+            <point key="canvasLocation" x="1400.5" y="61.5"/>
         </scene>
     </scenes>
 </document>

@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MagicalRecord.setupCoreDataStack(withStoreNamed: "Model")
         
         window = UIWindow.init(frame: UIScreen.main.bounds)
-        window?.rootViewController = MainTabController.getInstance()
+        window?.rootViewController = ExploreViewController.getInstance()
         return true
     }
 

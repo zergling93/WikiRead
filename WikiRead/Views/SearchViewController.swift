@@ -10,13 +10,19 @@ import UIKit
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
+    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    
+    var timer:Timer?
+    var progress:Float = 0
     
     var searchPages:Array<WikiPage> = Array<WikiPage>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.progressView.setProgress(0, animated: false)
+        self.progress = 0
         self.searchBar.delegate = self;
         self.tableView.delegate=self; self.tableView.dataSource=self
         self.tableView.register(UINib.init(nibName: "WikiPageCell", bundle: nil), forCellReuseIdentifier: "WikiPageCell")
@@ -35,23 +41,75 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
-    //MARK: - search methods
+//MARK: - search methods
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if !NetworkInterface.isInternetAvailable(){
-            let query = searchText
-            if query.count>0{
+        let query = searchText
+        if query.count>0{
+            if !NetworkInterface.isInternetAvailable(){
                 let pages = WikiPageDO.getInstance().getWikiPagesOffline(query: query)
                 if let pages = pages{
                     self.searchPages = pages
                     self.tableView.reloadData()
                 }
             }else{
-                self.searchPages.removeAll()
-                self.tableView.reloadData()
+                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(loadSearchResults(query:)), object: nil)
+                self.perform(#selector(loadSearchResults(query:)), with: query, afterDelay: 0.5)
+            }
+        }else{
+            NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(loadSearchResults(query:)), object: nil)
+            self.searchPages.removeAll()
+            self.tableView.reloadData()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        if NetworkInterface.isInternetAvailable(){
+            let query = searchBar.text
+            if let query = query, query.count>0{
+                
             }
         }
-
     }
+    
+    @objc func loadSearchResults(query:String)->Void{
+        self.startProgress()
+        WikiPageDO.getInstance().getWikiPagesOnline(query: query, success: {[weak self] (pages) in
+            if let pages = pages, let weakself = self{
+                weakself.completeProgress()
+                weakself.searchPages = pages
+                weakself.tableView.reloadData()
+            }
+        }) { (errorMessage) in
+            print(errorMessage)
+        }
+    }
+    
+    func startProgress()->Void{
+        self.progressView.setProgress(0, animated: false)
+        if let timer = self.timer{
+            timer.invalidate()
+        }
+        self.progress = 0;
+        self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(timerProgress), userInfo: nil, repeats: true)
+    }
+    @objc func timerProgress()->Void{
+        self.progress = self.progress + 1/10;
+        self.progressView.setProgress(self.progress, animated: true)
+        if(self.progress>=1){
+            self.completeProgress()
+        }
+    }
+    
+    func completeProgress()->Void{
+        self.progress = 0
+        if let timer = self.timer{
+            timer.invalidate()
+        }
+        self.progressView.setProgress(1, animated: true)
+    }
+    
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton=true
@@ -60,41 +118,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-//        if NetworkInterface.isInternetAvailable(){
-//            let query = searchBar.text
-//            if let query = query, query.count>0{
-//                WikiPageDO.getInstance().getWikiPagesOnline(query: query, success: { (pages) in
-//                    if let pages = pages{
-//                        self.searchPages = pages
-//                        self.tableView.reloadData()
-//                    }
-//                    
-//                }) { (errorMessage) in
-//                    
-//                }
-//            }
-//            
-//        }
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        if NetworkInterface.isInternetAvailable(){
-            let query = searchBar.text
-            if let query = query, query.count>0{
-                WikiPageDO.getInstance().getWikiPagesOnline(query: query, success: { (pages) in
-                    if let pages = pages{
-                        self.searchPages = pages
-                        self.tableView.reloadData()
-                    }
-                    
-                }) { (errorMessage) in
-                    
-                }
-            }
-
-        }
-
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -102,7 +125,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
-    //MARK: - table methods
+//MARK: - table methods
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.searchBar.resignFirstResponder()
     }
