@@ -18,8 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Bq-pq-5qw" customClass="OnboardingView" customModule="WikiRead" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9cK-AN-MlG">
-                                <rect key="frame" x="141.5" y="479" width="91" height="33"/>
+                                <rect key="frame" x="97" y="462" width="180" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="iJp-fj-Ee8"/>
+                                    <constraint firstAttribute="height" constant="50" id="irS-ut-CWb"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <state key="normal" title="Get Started">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -31,18 +39,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="9Bq-pq-5qw" firstAttribute="leading" secondItem="Yep-Ps-Ywi" secondAttribute="leading" id="G33-oN-IdU"/>
+                            <constraint firstItem="Yep-Ps-Ywi" firstAttribute="trailing" secondItem="9Bq-pq-5qw" secondAttribute="trailing" id="NJT-Tz-H8x"/>
                             <constraint firstItem="9cK-AN-MlG" firstAttribute="centerX" secondItem="TCu-R4-yzG" secondAttribute="centerX" id="XWp-Lg-hzT"/>
+                            <constraint firstItem="9Bq-pq-5qw" firstAttribute="bottom" secondItem="Yep-Ps-Ywi" secondAttribute="bottom" id="eU5-k2-Ky8"/>
+                            <constraint firstItem="9Bq-pq-5qw" firstAttribute="top" secondItem="Yep-Ps-Ywi" secondAttribute="top" id="fDn-j4-kmd"/>
                             <constraint firstItem="Yep-Ps-Ywi" firstAttribute="bottom" secondItem="9cK-AN-MlG" secondAttribute="bottom" constant="155" id="x0T-N6-SSc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Yep-Ps-Ywi"/>
                     </view>
                     <connections>
                         <outlet property="getStarted" destination="9cK-AN-MlG" id="8yC-SE-pAE"/>
+                        <outlet property="getStartedButton" destination="9cK-AN-MlG" id="fTs-O3-k5z"/>
+                        <outlet property="onboardingView" destination="9Bq-pq-5qw" id="gBZ-Fa-JRl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BbW-Be-pRt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-644" y="55"/>
+            <point key="canvasLocation" x="-644" y="54.422788605697157"/>
         </scene>
         <!--Explore View Controller-->
         <scene sceneID="tne-QT-ifu">

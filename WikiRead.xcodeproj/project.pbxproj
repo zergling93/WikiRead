@@ -64,6 +64,7 @@
 		9C42F9C020DE791B006DA007 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C42F9AF20DE791B006DA007 /* UIButton+WebCache.m */; };
 		9C42F9CF20DEA28B006DA007 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42F9CE20DEA28B006DA007 /* WebViewController.swift */; };
 		9CF11CD320DFB94700034A1D /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF11CD220DFB94700034A1D /* OnboardingViewController.swift */; };
+		9CF11CD720DFC33C00034A1D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF11CD620DFC33C00034A1D /* OnboardingView.swift */; };
 		B2780DD3170A2C81F34A660F /* Pods_WikiRead.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D555C4C1597AE888BA10A9 /* Pods_WikiRead.framework */; };
 /* End PBXBuildFile section */
 
@@ -179,6 +180,7 @@
 		9C42F9B020DE791B006DA007 /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
 		9C42F9CE20DEA28B006DA007 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		9CF11CD220DFB94700034A1D /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		9CF11CD620DFC33C00034A1D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		BB278897E93BF14B0A5099FF /* Pods-WikiRead.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WikiRead.release.xcconfig"; path = "Pods/Target Support Files/Pods-WikiRead/Pods-WikiRead.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -414,6 +416,7 @@
 			isa = PBXGroup;
 			children = (
 				9C32072C20DE56D700C3AA4F /* Main.storyboard */,
+				9CF11CD620DFC33C00034A1D /* OnboardingView.swift */,
 				9CF11CD220DFB94700034A1D /* OnboardingViewController.swift */,
 				9C32072A20DE56D700C3AA4F /* ExploreViewController.swift */,
 				9C42F98920DE75CF006DA007 /* SearchViewController.swift */,
@@ -576,6 +579,7 @@
 				9C32078020DE5CB900C3AA4F /* MagicalRecord+Setup.m in Sources */,
 				9C32079C20DE5E1200C3AA4F /* WikiPage.swift in Sources */,
 				9C42F9BE20DE791B006DA007 /* UIImageView+WebCache.m in Sources */,
+				9CF11CD720DFC33C00034A1D /* OnboardingView.swift in Sources */,
 				9C42F98420DE62F1006DA007 /* WikiPageDO.swift in Sources */,
 				9C42F9BF20DE791B006DA007 /* UIView+WebCacheOperation.m in Sources */,
 				9C32073C20DE574100C3AA4F /* NetworkInterface.swift in Sources */,

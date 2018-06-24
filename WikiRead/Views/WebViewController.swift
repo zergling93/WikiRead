@@ -67,7 +67,6 @@ class WebViewController: UIViewController, UIWebViewDelegate {
                         if let url = URL.init(string: str!){
                             DispatchQueue.main.async {
                                 self.topConstraint.constant = 0;
-                                self.view.layoutIfNeeded()
                                 self.webView.load(data, mimeType: "text/html", textEncodingName: "", baseURL:url )
                             }
                         }
@@ -118,6 +117,10 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
+        self.spinner.stopAnimating()
+    }
+    
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
         self.spinner.stopAnimating()
     }
     
