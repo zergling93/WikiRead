@@ -1,0 +1,6 @@
+framework module Pods_WikiRead {
+  umbrella header "Pods-WikiRead-umbrella.h"
+
+  export *
+  module * { export * }
+}

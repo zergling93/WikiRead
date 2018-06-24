@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import paper_onboarding
 
 class OnboardingViewController: UIViewController {
 
@@ -20,15 +21,16 @@ class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let onboarding = PaperOnboarding(itemsCount: 3)
+        
+        let onboarding = PaperOnboarding.init()
         onboarding.dataSource = self
         onboarding.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(onboarding)
         
-        for attribute: NSLayoutAttribute in [.Left, .Right, .Top, .Bottom] {
+        for attribute: NSLayoutAttribute in [.left, .right, .top, .bottom] {
             let constraint = NSLayoutConstraint(item: onboarding,
                                                 attribute: attribute,
-                                                relatedBy: .Equal,
+                                                relatedBy: .equal,
                                                 toItem: view,
                                                 attribute: attribute,
                                                 multiplier: 1,
@@ -44,18 +46,5 @@ class OnboardingViewController: UIViewController {
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

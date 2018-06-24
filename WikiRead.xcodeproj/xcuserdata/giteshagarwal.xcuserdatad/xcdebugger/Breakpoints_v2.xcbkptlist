@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WikiRead/Model/WikiPageDO.swift"
+            timestampString = "551532563.141493"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "getWikiPagesOnline(query:success:failure:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.String) -&gt; () in WikiRead.WikiPageDO.getWikiPagesOnline(query: Swift.String, success: (Swift.Optional&lt;Swift.Array&lt;WikiRead.WikiPage&gt;&gt;) -&gt; (), failure: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "WikiRead"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giteshagarwal/Personal/iOS/WikiRead/WikiRead/Model/WikiPageDO.swift"
+                  timestampString = "551532563.264308"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "33">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #2 (Swift.String) -&gt; () in WikiRead.WikiPageDO.getWikiPagesOnline(query: Swift.String, success: (Swift.Optional&lt;Swift.Array&lt;WikiRead.WikiPage&gt;&gt;) -&gt; (), failure: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "WikiRead"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giteshagarwal/Personal/iOS/WikiRead/WikiRead/Model/WikiPageDO.swift"
+                  timestampString = "551532563.267082"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "30">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WikiRead/Views/SearchViewController.swift"
+            timestampString = "551532563.142094"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "loadSearchResults(query:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
