@@ -12,7 +12,6 @@ class WikiPage: NSObject {
 
     var pageID : String?
     var image : String?
-    var pageData : Data?
     var title : String?
     var pageDescription : String!
     var timestamp : Date!
@@ -24,7 +23,6 @@ class WikiPage: NSObject {
         title = page.title
         image = page.image
         pageDescription = page.page_desciption
-        pageData = page.page_data
         timestamp = page.timestamp
         pageURL = page.page_url
     }

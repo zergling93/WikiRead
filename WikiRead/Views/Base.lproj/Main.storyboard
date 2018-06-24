@@ -10,6 +10,40 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Onboarding View Controller-->
+        <scene sceneID="92D-ty-kxH">
+            <objects>
+                <viewController storyboardIdentifier="OnboardingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ceh-hT-4iw" customClass="OnboardingViewController" customModule="WikiRead" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TCu-R4-yzG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9cK-AN-MlG">
+                                <rect key="frame" x="141.5" y="479" width="91" height="33"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <state key="normal" title="Get Started">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="getStarted:" destination="ceh-hT-4iw" eventType="touchUpInside" id="5F0-e7-OYH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9cK-AN-MlG" firstAttribute="centerX" secondItem="TCu-R4-yzG" secondAttribute="centerX" id="XWp-Lg-hzT"/>
+                            <constraint firstItem="Yep-Ps-Ywi" firstAttribute="bottom" secondItem="9cK-AN-MlG" secondAttribute="bottom" constant="155" id="x0T-N6-SSc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Yep-Ps-Ywi"/>
+                    </view>
+                    <connections>
+                        <outlet property="getStarted" destination="9cK-AN-MlG" id="8yC-SE-pAE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BbW-Be-pRt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-644" y="55"/>
+        </scene>
         <!--Explore View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -120,7 +154,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FxY-0c-1wE">
-                                <rect key="frame" x="0.0" y="-70" width="375" height="737"/>
+                                <rect key="frame" x="0.0" y="-44" width="375" height="711"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="st8-9o-QN8">
@@ -131,7 +165,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="FxY-0c-1wE" firstAttribute="leading" secondItem="9eL-2S-tvt" secondAttribute="leading" id="Cus-yo-bzK"/>
-                            <constraint firstItem="FxY-0c-1wE" firstAttribute="top" secondItem="XN0-Js-NKF" secondAttribute="top" constant="-70" id="Jov-fZ-wj1"/>
+                            <constraint firstItem="FxY-0c-1wE" firstAttribute="top" secondItem="XN0-Js-NKF" secondAttribute="top" constant="-44" id="Jov-fZ-wj1"/>
                             <constraint firstItem="9eL-2S-tvt" firstAttribute="trailing" secondItem="FxY-0c-1wE" secondAttribute="trailing" id="JwD-M1-3m6"/>
                             <constraint firstItem="st8-9o-QN8" firstAttribute="centerY" secondItem="XN0-Js-NKF" secondAttribute="centerY" id="gSl-bn-kLG"/>
                             <constraint firstItem="st8-9o-QN8" firstAttribute="centerX" secondItem="XN0-Js-NKF" secondAttribute="centerX" id="qwB-Oe-Qcp"/>
@@ -141,6 +175,7 @@
                     </view>
                     <connections>
                         <outlet property="spinner" destination="st8-9o-QN8" id="vSF-Bf-nw6"/>
+                        <outlet property="topConstraint" destination="Jov-fZ-wj1" id="5LR-59-teG"/>
                         <outlet property="webView" destination="FxY-0c-1wE" id="KzL-B1-z7Z"/>
                     </connections>
                 </viewController>

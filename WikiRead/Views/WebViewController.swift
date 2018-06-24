@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import WebKit
 
 class WebViewController: UIViewController, UIWebViewDelegate {
 
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var webView: UIWebView!
     
@@ -22,6 +24,7 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     }
     
     var page:WikiPage?
+    var flag = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,38 +40,74 @@ class WebViewController: UIViewController, UIWebViewDelegate {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(back))
     }
     
+    
+    
+    
+    
+    
+    
     func loadWebView()->Void{
         self.spinner.startAnimating()
         self.webView.delegate = self
+        if NetworkInterface.isInternetAvailable(){
+            self.loadWebViewOnline()
+        }else{
+            self.loadWebViewOffline()
+        }
+    }
+    
+    
+    func loadWebViewOffline()->Void{
         if let page = page{
-            
-            DispatchQueue.global(qos: .background).async{
+            DispatchQueue.global(qos: .background).async {
                 let wpage = WikiPageDO.getInstance().getWikiPageOfflineWith(pageID: page.pageID!)
                 if let wpage = wpage{
-                    let request = WikiPageDO.getInstance().getURLRequestFromPageDataOffline(page: wpage)
-                    if let request = request{
-                        DispatchQueue.main.async {
-                            self.webView.loadRequest(request)
+                    if let data = WikiPageDO.getInstance().getDataFromPageOffline(page: wpage){
+                        let str = page.pageURL
+                        if let url = URL.init(string: str!){
+                            DispatchQueue.main.async {
+                                self.topConstraint.constant = 0;
+                                self.view.layoutIfNeeded()
+                                self.webView.load(data, mimeType: "text/html", textEncodingName: "", baseURL:url )
+                            }
                         }
                     }
-                }
-            }
-            
-            if NetworkInterface.isInternetAvailable(){
-                WikiPageDO.getInstance().getWikiPageURL(page: page, success: { [weak self] (url) in
-                    if let weakSelf = self {
-                        weakSelf.savePageOffline()
-                        let request = WikiPageDO.getInstance().getURLRequestFromPageOnline(page: page)
-                        if let request = request{
-                            weakSelf.webView.loadRequest(request)
-                        }
-                    }
-                }) { (errorMessage) in
-                    
                 }
             }
         }
     }
+    
+    
+    func loadWebViewOnline()->Void{
+        if let page = page{
+            WikiPageDO.getInstance().getWikiPageURL(page: page, success: { [weak self] (url) in
+                WikiPageDO.getInstance().savePageData(page: page)
+                if let weakSelf = self {
+                    let request = WikiPageDO.getInstance().getDataFromPageOnline(page: page)
+                    if let request = request{
+                        weakSelf.topConstraint.constant = -70;
+                        weakSelf.view.layoutIfNeeded()
+                        weakSelf.flag = true
+                        weakSelf.webView.loadRequest(request)
+                    }
+                }
+            }) { (errorMessage) in
+                print(errorMessage)
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     func savePageOffline()->Void{
         WikiPageDO.getInstance().savePageData(page: self.page!)

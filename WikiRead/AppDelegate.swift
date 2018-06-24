@@ -15,8 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        let cache = URLCache.init(memoryCapacity: 4*1024*1024, diskCapacity: 20*1024*1024, diskPath: nil)
+        URLCache.shared = cache
         MagicalRecord.setupCoreDataStack(withStoreNamed: "Model")
         
+        let firstTime = UserDefaults.standard.bool(forKey: "FIRST_TIME")
+        if firstTime{
+            UserDefaults.standard.set(true, forKey: "FIRST_TIME")
+            
+        }
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.rootViewController = ExploreViewController.getInstance()
         return true

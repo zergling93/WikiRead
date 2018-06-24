@@ -31,7 +31,6 @@ class WikiPageDO: NSObject {
 
     
     var recentPages:Array<WikiPage> = Array<WikiPage>()
-    var bookmarkPages:Array<WikiPage> = Array<WikiPage>()
     
     
     
@@ -40,7 +39,6 @@ class WikiPageDO: NSObject {
         if !self.delegates.contains(where: {$0 === delegate}){
             self.delegates.append(delegate)
         }
-        
     }
     
     func removeDelegate(delegate:WikiPageDODelegate)->Void{
@@ -60,19 +58,6 @@ class WikiPageDO: NSObject {
             let index = count < 20 ? count : 20
             for i in 0..<index{
                 pages.append(WikiPage(page:pageArray[i]))
-            }
-            return pages
-        }
-        return nil
-    }
-    
-    func getBookmarkWikiPagesOffline()->Array<WikiPage>?{
-        let predicate = NSPredicate(format:"bookmark == true")
-        let pageArray:Array<Page>? = Page.mr_findAll(with: predicate) as? Array<Page>
-        if let pageArray = pageArray, pageArray.count>0{
-            var pages:Array<WikiPage> = Array<WikiPage>()
-            for page in pageArray{
-                pages.append(WikiPage(page: page))
             }
             return pages
         }
@@ -105,7 +90,6 @@ class WikiPageDO: NSObject {
                 page.title = wpage.title
                 page.image = wpage.image
                 page.page_desciption = wpage.pageDescription
-                page.page_data = wpage.pageData
                 page.page_id = wpage.pageID
                 page.timestamp = wpage.timestamp
                 page.page_url = wpage.pageURL
@@ -131,32 +115,6 @@ class WikiPageDO: NSObject {
         let page = Page.mr_findFirst(with: predicate)
         if let page = page{
             return WikiPage(page: page)
-        }
-        return nil
-    }
-    
-    
-    func getURLRequestFromPageDataOffline(page: WikiPage)->URLRequest?{
-        if let data = page.pageData{
-            let path =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first! as NSURL
-            if let pageid = page.pageID{
-                let filePath = path.appendingPathComponent("\(pageid).html")
-                if let filePath = filePath{
-                    if !FileManager().fileExists(atPath: filePath.path){
-                        do{
-                            try data.write(to: filePath)
-                            let url = URL.init(fileURLWithPath: filePath.path)
-                            return URLRequest.init(url: url)
-                        }catch{
-                            return nil
-                        }
-                    }else{
-                        let url = URL.init(fileURLWithPath: filePath.path)
-                        return URLRequest.init(url: url)
-                    }
-                }
-            }
-            
         }
         return nil
     }
@@ -198,67 +156,81 @@ class WikiPageDO: NSObject {
     }
     
     func getWikiPageURL(page : WikiPage, success:@escaping (String)->Void, failure:@escaping (String)->Void)->Void{
-        if let pageID = page.pageID{
-            let url = "\(pageURL)\(pageID)"
-            NetworkInterface .callGetApi(urlString: url, success: { (json) in
-                var flag = false
-                if let json = json{
-                    let query:Dictionary<String,Any>? = json["query"] as? Dictionary<String, Any>
-                    if let query = query{
-                        let pages:Array<Dictionary<String,Any>>? = query["pages"] as? Array<Dictionary<String,Any>>
-                        if let pages = pages, pages.count>0{
-                            let pageid:Dictionary<String,Any> = pages[0]
-                            let fullURL:String? = pageid["fullurl"] as? String
-                            if let fullURL = fullURL{
-                                page.pageURL = fullURL
-                                flag = true
-                                DispatchQueue.main.async {
-                                    success(fullURL)
+        if let url = page.pageURL{
+            success(url)
+        }else{
+            if let pageID = page.pageID{
+                let url = "\(pageURL)\(pageID)"
+                NetworkInterface .callGetApi(urlString: url, success: { (json) in
+                    var flag = false
+                    if let json = json{
+                        let query:Dictionary<String,Any>? = json["query"] as? Dictionary<String, Any>
+                        if let query = query{
+                            let pages:Array<Dictionary<String,Any>>? = query["pages"] as? Array<Dictionary<String,Any>>
+                            if let pages = pages, pages.count>0{
+                                let pageid:Dictionary<String,Any> = pages[0]
+                                let fullURL:String? = pageid["fullurl"] as? String
+                                if let fullURL = fullURL{
+                                    page.pageURL = fullURL
+                                    flag = true
+                                    DispatchQueue.main.async {
+                                        success(fullURL)
+                                    }
                                 }
+                                
                             }
-                            
                         }
                     }
-                }
-                if !flag {
+                    if !flag {
+                        DispatchQueue.main.async {
+                            failure("No Data Found")
+                        }
+                    }
+                }) { (errorMessage) in
                     DispatchQueue.main.async {
-                        failure("No Data Found")
+                        failure(errorMessage)
                     }
                 }
-            }) { (errorMessage) in
-                DispatchQueue.main.async {
-                    failure(errorMessage)
-                }
             }
+            else {failure("No Page ID Found")}
         }
+
     }
     
     func savePageData(page : WikiPage){
-        DispatchQueue.global(qos: .background).async{
-            let url = page.pageURL
-            if let url = url {
-                let uri = URL.init(string: url)
-                if let uri = uri{
-                    do{
-                        try page.pageData = Data.init(contentsOf: uri)
-                        self.saveWikiPageOffline(wpage: page, success: {
-                        }) { (errorMessage) in
-                        }
-                    }catch{
-                        
-                    }
-                }
-            }
-        }
+        self.saveWikiPageOffline(wpage: page, success: {
+        }, failure: { (errorMessage) in
+        })
     }
     
     
-    
-    func getURLRequestFromPageOnline(page: WikiPage)->URLRequest?{
+    func getDataFromPageOnline(page: WikiPage)->URLRequest?{
         if let url = page.pageURL{
             let uri = URL.init(string: url)
             if let uri = uri{
-                return URLRequest.init(url: uri)
+                var request = URLRequest.init(url: uri, cachePolicy: URLRequest.CachePolicy.reloadRevalidatingCacheData, timeoutInterval: 35)
+                request.httpMethod="GET"
+                let session:URLSession=URLSession.init(configuration: URLSessionConfiguration.default)
+                let task = session.dataTask(with: request) { (data, response, error) in}
+                task.resume()
+                return request
+            }
+        }
+        return nil
+    }
+    
+    
+    func getDataFromPageOffline(page: WikiPage)->Data?{
+        if let url = page.pageURL{
+            let uri = URL.init(string: url)
+            if let uri = uri{
+                var request = URLRequest.init(url: uri, cachePolicy: URLRequest.CachePolicy.returnCacheDataDontLoad, timeoutInterval: 35)
+                request.httpMethod="GET"
+                let response = URLCache.shared.cachedResponse(for: request)
+                if let response = response{
+                    let data = response.data
+                    return data
+                }
             }
         }
         return nil

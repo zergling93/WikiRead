@@ -63,9 +63,13 @@
 		9C42F9BF20DE791B006DA007 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C42F9AB20DE791B006DA007 /* UIView+WebCacheOperation.m */; };
 		9C42F9C020DE791B006DA007 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C42F9AF20DE791B006DA007 /* UIButton+WebCache.m */; };
 		9C42F9CF20DEA28B006DA007 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42F9CE20DEA28B006DA007 /* WebViewController.swift */; };
+		9CF11CD320DFB94700034A1D /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF11CD220DFB94700034A1D /* OnboardingViewController.swift */; };
+		B2780DD3170A2C81F34A660F /* Pods_WikiRead.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D555C4C1597AE888BA10A9 /* Pods_WikiRead.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		96D1251BD31A5DA6EB1ED269 /* Pods-WikiRead.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WikiRead.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WikiRead/Pods-WikiRead.debug.xcconfig"; sourceTree = "<group>"; };
+		99D555C4C1597AE888BA10A9 /* Pods_WikiRead.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WikiRead.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C32072520DE56D700C3AA4F /* WikiRead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WikiRead.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C32072820DE56D700C3AA4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C32072A20DE56D700C3AA4F /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 		9C42F9AF20DE791B006DA007 /* UIButton+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WebCache.m"; sourceTree = "<group>"; };
 		9C42F9B020DE791B006DA007 /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
 		9C42F9CE20DEA28B006DA007 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		9CF11CD220DFB94700034A1D /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		BB278897E93BF14B0A5099FF /* Pods-WikiRead.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WikiRead.release.xcconfig"; path = "Pods/Target Support Files/Pods-WikiRead/Pods-WikiRead.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,17 +187,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2780DD3170A2C81F34A660F /* Pods_WikiRead.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4CF7543E86CD068BC57B6EC0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				99D555C4C1597AE888BA10A9 /* Pods_WikiRead.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7B7C80D3689ED2346751128D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				96D1251BD31A5DA6EB1ED269 /* Pods-WikiRead.debug.xcconfig */,
+				BB278897E93BF14B0A5099FF /* Pods-WikiRead.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9C32071C20DE56D700C3AA4F = {
 			isa = PBXGroup;
 			children = (
 				9C32072720DE56D700C3AA4F /* WikiRead */,
 				9C32072620DE56D700C3AA4F /* Products */,
+				7B7C80D3689ED2346751128D /* Pods */,
+				4CF7543E86CD068BC57B6EC0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -388,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				9C32072C20DE56D700C3AA4F /* Main.storyboard */,
+				9CF11CD220DFB94700034A1D /* OnboardingViewController.swift */,
 				9C32072A20DE56D700C3AA4F /* ExploreViewController.swift */,
 				9C42F98920DE75CF006DA007 /* SearchViewController.swift */,
 				9C42F9CE20DEA28B006DA007 /* WebViewController.swift */,
@@ -404,9 +431,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C32073720DE56D900C3AA4F /* Build configuration list for PBXNativeTarget "WikiRead" */;
 			buildPhases = (
+				FDD69574659B74297EF662B5 /* [CP] Check Pods Manifest.lock */,
 				9C32072120DE56D700C3AA4F /* Sources */,
 				9C32072220DE56D700C3AA4F /* Frameworks */,
 				9C32072320DE56D700C3AA4F /* Resources */,
+				92CC31207D1CA06B0A5031B1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -464,6 +493,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		92CC31207D1CA06B0A5031B1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WikiRead/Pods-WikiRead-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/paper-onboarding/paper_onboarding.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/paper_onboarding.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WikiRead/Pods-WikiRead-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FDD69574659B74297EF662B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WikiRead-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9C32072120DE56D700C3AA4F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -514,6 +582,7 @@
 				9C42F9BC20DE791B006DA007 /* SDWebImageDownloaderOperation.m in Sources */,
 				9C42F9B120DE791B006DA007 /* UIImage+WebP.m in Sources */,
 				9C32079120DE5CB900C3AA4F /* NSNumber+MagicalDataImport.m in Sources */,
+				9CF11CD320DFB94700034A1D /* OnboardingViewController.swift in Sources */,
 				9C32079420DE5CB900C3AA4F /* MagicalImportFunctions.m in Sources */,
 				9C42F98A20DE75CF006DA007 /* SearchViewController.swift in Sources */,
 				9C32079F20DE5E2800C3AA4F /* Model.xcdatamodeld in Sources */,
@@ -662,10 +731,15 @@
 		};
 		9C32073820DE56D900C3AA4F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96D1251BD31A5DA6EB1ED269 /* Pods-WikiRead.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FY2JCVS5XX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = WikiRead/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -682,10 +756,15 @@
 		};
 		9C32073920DE56D900C3AA4F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB278897E93BF14B0A5099FF /* Pods-WikiRead.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FY2JCVS5XX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = WikiRead/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
