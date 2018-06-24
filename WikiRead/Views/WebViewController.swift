@@ -65,9 +65,7 @@ class WebViewController: UIViewController, UIWebViewDelegate {
                     if let data = WikiPageDO.getInstance().getDataFromPageOffline(page: wpage){
                         let str = page.pageURL
                         if let url = URL.init(string: str!){
-                            
                             DispatchQueue.main.async {
-                                
                                 self.topConstraint.constant = 0;
                                 self.webView.load(data, mimeType: "text/html", textEncodingName: "", baseURL:url )
                             }
